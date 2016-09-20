@@ -1,10 +1,18 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace Linq
 {
     class Program
     {
+        static IEnumerable<int> GetYield()
+        {
+            Random r = new Random();
+            for (int i = 0; i < 3; i++)
+                yield return r.Next(0, 10);
+        }
+
         static void Main(string[] args)
         {
             string[] cars = { "Mercedez", "Aston Martin", "BMW", "Ford", "Audi" };
@@ -31,6 +39,11 @@ namespace Linq
                         .Select(car => new { car, car.Length });
             foreach (var item in query4)
                 Console.WriteLine(item);
+
+            Console.WriteLine("\n\tEnumerable");
+            IEnumerable<int> res = GetYield();
+            foreach (var item in res)
+                Console.WriteLine(item + ' ');
         }
     }
 }
