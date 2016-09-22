@@ -1,11 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
+using System.Runtime.Serialization.Formatters.Binary;
 
 namespace Linq
 {
     class Program
     {
+        public static object BinaryFormat { get; private set; }
+
         static IEnumerable<int> GetYield()
         {
             Random r = new Random();
@@ -44,6 +48,7 @@ namespace Linq
             IEnumerable<int> res = GetYield();
             foreach (var item in res)
                 Console.WriteLine(item + ' ');
+
         }
     }
 }
